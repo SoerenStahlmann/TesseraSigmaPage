@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.entity.GdpEntity;
 import com.example.demo.entity.InterestEntity;
 import com.example.demo.entity.UnemploymentEntity;
 import com.example.demo.service.FinancialDataService;
@@ -51,42 +52,71 @@ public class ApiController {
 	@RequestMapping("api/unempDate")
 	public Set<UnemploymentEntity> unemploymentDate(@RequestParam(value="start", defaultValue="") String start, @RequestParam(value="end", defaultValue="") String end, @RequestParam(value="region", defaultValue="germany") String region){
 		
-		
-		Date startD = new Date();
-		Date endD = new Date();
-		
-		
-		
+		Date[] dArray = new Date[2];
+
 		/**
 		 * convert Input of String to util.Date
 		 * TODO: put in own function
 		 */
 		if(end.equals("")){
-			endD = new Date();
+			dArray[1] = new Date();
 			//start
 			Calendar c = new GregorianCalendar(1948, 1, 1);
-			startD = c.getTime();
+			dArray[0] = c.getTime();
 		}
 		//convert String to util.Date
 		else{
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			try{
-				
-				startD = sdf.parse(start);
-				endD = sdf.parse(end);
-				
-			}catch (java.text.ParseException e) {
-				e.printStackTrace();
-			}
+			dArray = this.parseDate(start, end);
 		}
 		
-		System.out.println(endD);
-		System.out.println(startD);
+		System.out.println(dArray[0]);
+		System.out.println(dArray[1]);
 		
-		return financialService.getUnemploymentBetween(startD, endD);
+		return financialService.getUnemploymentBetween(dArray[0], dArray[1]);
 		
 	}
 	
+	
+	@RequestMapping("api/gdp")
+	public List<GdpEntity> gdpAll(){
+		
+		return financialService.getGdp();
+		
+	}
+	
+	
+	
+	
+	
+	/**
+	 * 
+	 * @param start
+	 * @param end
+	 * @return dateArray with dateArray[0] being the startDate and dateArray[1] being the endDate as a java.util.date object
+	 */
+	public Date[] parseDate(String start, String end){
+		
+		//init dateArray
+		Date[] dateArray = new Date[2];
+		
+		
+		//parsing from String to Date
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		try{
+			
+			dateArray[0] = sdf.parse(start);
+			dateArray[1] = sdf.parse(end);
+			
+		}catch (java.text.ParseException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return dateArray;
+		
+		
+	}
 	
 	
 	

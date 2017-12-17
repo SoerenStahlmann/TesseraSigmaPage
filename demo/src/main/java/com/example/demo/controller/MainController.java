@@ -14,7 +14,7 @@ public class MainController{
 	 * 
 	 * @return the index.html
 	 */
-	@RequestMapping("/services")
+	@RequestMapping("/index")
 	public String index() {
 		System.out.println("received request for - index");
 		return "index";
@@ -25,18 +25,5 @@ public class MainController{
 		System.out.println("received request for - landing");
 		return "landing";
 	}
-	
-	@RequestMapping("/about")
-	public String about() {
-		System.out.println("received request for - about");
-		return "about";
-	}
-	
-	@RequestMapping("/home")
-	public String home() {
-		System.out.println("received request for - home");
-		return "home";
-	}
-	
 	
 }

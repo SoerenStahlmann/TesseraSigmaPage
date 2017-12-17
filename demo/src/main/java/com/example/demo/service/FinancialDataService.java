@@ -7,18 +7,26 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.entity.GdpEntity;
 import com.example.demo.entity.InterestEntity;
 import com.example.demo.entity.UnemploymentEntity;
+import com.example.demo.repositories.GdpRepository;
 import com.example.demo.repositories.InterestRepository;
 import com.example.demo.repositories.UnemploymentRepository;
 
 @Service
 public class FinancialDataService {
 	
+	/**
+	 * create all Repositories
+	 */
 	@Autowired
 	public InterestRepository intRepository;
 	@Autowired
 	public UnemploymentRepository unempRepository;
+	@Autowired
+	public GdpRepository gdpRepository;
+	
 
 	
 	
@@ -42,12 +50,16 @@ public class FinancialDataService {
 		
 		return unempRepository.findAll();
 	}
-	
-	
-	
+
 	public Set<UnemploymentEntity> getUnemploymentBetween(Date start, Date end){
 		
 		return unempRepository.findAllByDateBetween(start, end);
+		
+	}
+	
+	public List<GdpEntity> getGdp(){
+		
+		return gdpRepository.findAll();
 		
 	}
 	

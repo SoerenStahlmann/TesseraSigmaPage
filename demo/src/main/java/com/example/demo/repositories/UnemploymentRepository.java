@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.example.demo.entity.UnemploymentEntity;
 
-public interface UnemploymentRepository extends CrudRepository<UnemploymentEntity, Date>{
+public interface UnemploymentRepository extends CrudRepository<UnemploymentEntity, Long>{
 	
 	public List<UnemploymentEntity> findAll();
 	public Set<UnemploymentEntity> findAllByDateBetween(Date start, Date end);

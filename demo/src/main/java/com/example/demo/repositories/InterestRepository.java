@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.example.demo.entity.InterestEntity;
 
-public interface InterestRepository extends CrudRepository<InterestEntity, Date> {
+public interface InterestRepository extends CrudRepository<InterestEntity, Long> {
 
 	
 	public List<InterestEntity> findAll();
