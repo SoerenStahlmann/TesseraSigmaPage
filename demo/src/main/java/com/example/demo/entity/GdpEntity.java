@@ -25,7 +25,7 @@ public class GdpEntity {
 	private Date date;
 	
 	@Column(nullable = true)
-	private Double gdp;
+	private double gdp;
 	
 	@Column(nullable = true)
 	private String region;
@@ -52,7 +52,7 @@ public class GdpEntity {
 		this.date = date;
 	}
 
-	public Double getGdp() {
+	public double getGdp() {
 		return gdp;
 	}
 

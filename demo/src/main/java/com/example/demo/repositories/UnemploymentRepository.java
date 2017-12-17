@@ -11,6 +11,6 @@ import com.example.demo.entity.UnemploymentEntity;
 public interface UnemploymentRepository extends CrudRepository<UnemploymentEntity, Long>{
 	
 	public List<UnemploymentEntity> findAll();
-	public Set<UnemploymentEntity> findAllByDateBetween(Date start, Date end);
+	public List<UnemploymentEntity> findAllByDateBetween(Date start, Date end);
 
 }

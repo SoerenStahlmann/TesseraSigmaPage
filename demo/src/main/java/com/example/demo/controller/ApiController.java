@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.GdpEntity;
 import com.example.demo.entity.InterestEntity;
+import com.example.demo.entity.StockEntity;
 import com.example.demo.entity.UnemploymentEntity;
 import com.example.demo.service.FinancialDataService;
+import com.example.demo.service.TechnicalDataService;
 
 /**
  * A rest controller for the used api
@@ -29,6 +30,8 @@ public class ApiController {
 
 	@Autowired
 	public FinancialDataService financialService;
+	@Autowired
+	public TechnicalDataService technicalService;
 
 	@RequestMapping("/api/interest")
 	public List<InterestEntity> interestRegions(@RequestParam(value="region", defaultValue="Europa") String region) {
@@ -50,13 +53,12 @@ public class ApiController {
 	}
 	
 	@RequestMapping("api/unempDate")
-	public Set<UnemploymentEntity> unemploymentDate(@RequestParam(value="start", defaultValue="") String start, @RequestParam(value="end", defaultValue="") String end, @RequestParam(value="region", defaultValue="germany") String region){
+	public List<UnemploymentEntity> unemploymentDate(@RequestParam(value="start", defaultValue="") String start, @RequestParam(value="end", defaultValue="") String end, @RequestParam(value="region", defaultValue="germany") String region){
 		
 		Date[] dArray = new Date[2];
 
 		/**
 		 * convert Input of String to util.Date
-		 * TODO: put in own function
 		 */
 		if(end.equals("")){
 			dArray[1] = new Date();
@@ -77,14 +79,32 @@ public class ApiController {
 	}
 	
 	
-	@RequestMapping("api/gdp")
-	public List<GdpEntity> gdpAll(){
+	@RequestMapping("api/stock")
+	public List<StockEntity> getClose(@RequestParam(value="start", defaultValue="") String start, @RequestParam(value="end", defaultValue="") String end){
 		
-		return financialService.getGdp();
+
+		Date[] dArray = new Date[2];
+
+		/**
+		 * convert Input of String to util.Date
+		 */
+		if(end.equals("")){
+			dArray[1] = new Date();
+			//start
+			Calendar c = new GregorianCalendar(1948, 1, 1);
+			dArray[0] = c.getTime();
+		}
+		//convert String to util.Date
+		else{
+			dArray = this.parseDate(start, end);
+		}
+		
+		System.out.println(dArray[0]);
+		System.out.println(dArray[1]);
+		
+		return technicalService.getClose(dArray[0], dArray[1]);
 		
 	}
-	
-	
 	
 	
 	
@@ -110,12 +130,8 @@ public class ApiController {
 		}catch (java.text.ParseException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
+
 		return dateArray;
-		
-		
 	}
 	
 	

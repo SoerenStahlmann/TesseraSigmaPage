@@ -6,12 +6,12 @@
     <meta name="description" content="A website for risk assesment of investing opportunities."/>
     <title>Responsive Side Menu &ndash; Layout Examples &ndash; Pure</title>
     <!-- pure css files -->
-    <link rel="stylesheet" href="..\static\css\pure-min.css"/>
+    <link rel="stylesheet" href="..\static\css\pure-min.css" th:href="@{css/pure-min.css}"/>
         <!--[if gt IE 8]><!-->
-            <link rel="stylesheet" href="..\static\css\side-menu.css"/>
+            <link rel="stylesheet" href="..\static\css\side-menu.css" th:href="@{css/side-menu.css}"/>
         <!--<![endif]-->
 	<!-- w3 css -->
-	<link rel ="stylesheet" href="../static/css/w3.css"/>
+	<link rel ="stylesheet" href="../static/css/w3.css" th:href="@{css/w3.css}"/>
 </head>
 <body>
 
@@ -43,6 +43,7 @@
             </ul>
         </div>
     </div>
+
 	
 	
 	
@@ -109,11 +110,12 @@
 
         
 </div>
+</div>
 
 
 
 <!-- pure css script -->
-<script src="..\static/js/ui.js"></script>
+<script src="..\static/js/ui.js" th:src="@{js/ui.js}"></script>
 
 </body>
 </html>

@@ -51,7 +51,7 @@ public class FinancialDataService {
 		return unempRepository.findAll();
 	}
 
-	public Set<UnemploymentEntity> getUnemploymentBetween(Date start, Date end){
+	public List<UnemploymentEntity> getUnemploymentBetween(Date start, Date end){
 		
 		return unempRepository.findAllByDateBetween(start, end);
 		
