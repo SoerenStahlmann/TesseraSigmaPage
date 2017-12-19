@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="A website for risk assesment of investing opportunities."/>
-    <title>Responsive Side Menu &ndash; Layout Examples &ndash; Pure</title>
+    <title>Tessera Sigma Dashboard</title>
     <!-- pure css files -->
     <link rel="stylesheet" href="..\static\css\pure-min.css" th:href="@{css/pure-min.css}"/>
         <!--[if gt IE 8]><!-->
@@ -62,27 +62,102 @@
 	
 	<div id="de" class="city">
 	
+		<!-- Header -->
+		<div class="header">
+			<h1>
+			
+				Wirtschaftsdaten
+			
+			</h1>
+		</div>
+		
+	
+	
+		<!-- Content -->
 		<div class="content">
-
-			<br/>
-			<br/>
-		
-		
+			
+			<br>
+			</br>
 			<div class="pure-g">
 			
 			
-				<div class="pure-u-1-2">test123</div>
-				<div class="pure-u-1-2">22aaaaaaaaa</div>
+				<div class="pure-u-2-5">
+				
+					<h2>Indikator</h2>
+				
+				</div>
+				
+				<div class="pure-u-2-5">
+				
+					<h2>Wert</h2>
+				
+				</div>
 			
 			</div>
 			
-		
-		
-		
-		
-		
-			<p> Blabla </p>
-		
+			<!-- Content body -->
+			
+			<div class="pure-g">
+				<div class="pure-u-2-5">
+					Inflation
+				</div>
+			
+				<div class="pure-u-2-5">
+					1.15%
+				</div>
+				
+				<div class="pure-u-1-5">
+					<button class="w3-bar-item w3-button" onclick="openCity('de')">more...</button>
+				</div>
+			</div>
+			
+			<div class="pure-g">
+				<div class="pure-u-2-5">
+					GDP
+					
+					
+					<div id="gdp1">
+						<canvas id="myChart" width="400" height="400"></canvas>
+					</div>	
+					
+				</div>
+			
+				<div class="pure-u-2-5">
+					1 234 Mrd. €
+					<div id="gdp2">
+						asgq
+					</div>
+					
+					
+				</div>
+				
+				<div class="pure-u-1-5">
+					<button class="w3-bar-item w3-button" onclick="toggleElements('gdp')">more...</button>
+					
+					<div id="gdp3">
+						asts
+					</div>
+					
+					
+					
+				</div>
+			</div>
+			
+			<div class="pure-g">
+				<div class="pure-u-2-5">
+					Leitzins
+				</div>
+			
+				<div class="pure-u-2-5">
+					0.00 %
+				</div>
+				
+				<div class="pure-u-1-5">
+					<button class="w3-bar-item w3-button" onclick="openCity('de')">more...</button>
+				</div>
+			</div>
+			
+			
 		</div>
 	
 	
@@ -115,7 +190,40 @@
 
 
 <!-- pure css script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script src="..\static/js/ui.js" th:src="@{js/ui.js}"></script>
+<script>
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [{
+            label: "gdp",
+            backgroundColor: 'rgb(66, 220, 163)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45],
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+
+
+
+
+
+
+
+
+
+
+</script>
 
 </body>
 </html>

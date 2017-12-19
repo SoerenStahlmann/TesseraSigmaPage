@@ -56,6 +56,44 @@ function openCity(cityName) {
 }
 
 
+function getElementsByIdStartsWith(selectorTag, prefix) {
+    var items = [];
+    var myPosts = document.getElementsByTagName(selectorTag);
+    for (var i = 0; i < myPosts.length; i++) {
+        //omitting undefined null check for brevity
+        if (myPosts[i].id.lastIndexOf(prefix, 0) === 0) {
+            items.push(myPosts[i]);
+        }
+    }
+    return items;
+}
+
+
+
+
+function toggleElements(columnID) {
+	
+    var col = getElementsByIdStartsWith("div", columnID);
+	
+	
+	for(var i = 0; i < col.length; i++){
+		
+		if(col[i].style.display === "none"){		
+			col[i].style.display = "block";
+		} else{
+			col[i].style.display = "none";
+		}
+		
+		
+	}
+	
+	
+	
+	
+}
+
+
+
 
 
 
