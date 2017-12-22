@@ -81,130 +81,233 @@
 			
 			<br>
 			</br>
-			<div class="pure-g">
 			
-			
-				<div class="pure-u-2-5">
-				
-					<h2>Indikator</h2>
-				
-				</div>
-				
-				<div class="pure-u-2-5">
-				
-					<h2>Wert</h2>
-				
-				</div>
-			
-			</div>
-			
-			<!-- Content body -->
 			
 			<div class="pure-g">
 				<div class="pure-u-2-5">
-					Inflation
-				</div>
-			
-				<div class="pure-u-2-5">
-					1.15%
+					<!-- First Box-->
+					<div class="box box-warning box-solid">
+						<!-- Box header -->
+						<div class="box-header with-border">
+							<h3 class="box-title">Makrodaten</h3>
+							<div class="box-tools pull-right">
+								<button class="btn btn-box-tool" data-widget="collapse">
+									<i class="fa fa-minus"></i>
+								</button>
+							</div>
+						</div>
+						<!-- Box body -->
+						<div class="box-body">
+							
+							<table class="pure-table pure-table-horizontal pure-table-fitted" id="tst">
+								<tbody>
+									<tr>
+										<td>Bruttoinlandsprodukt</td>
+										<td>1 300 Mill. €</td>
+										<td>+</td>
+									</tr>
+									<tr>
+										<td>Inflation</td>
+										<td>1.60 %</td>
+										<td>+</td>
+									</tr>
+									<tr>
+										<td>Sentinement Index</td>
+										<td>17.04</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>Arbeitslosigkeit</td>
+										<td>4.56 %</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td>Leitzins</td>
+										<td>0.00 %</td>
+										<td>-</td>
+									</tr>
+								</tbody>
+								
+							</table>
+							
+						</div>
+					</div>
+					
+					<!-- Sencond Box -->
+					<div class="box box-warning box-solid">
+						<!-- Box header -->
+						<div class="box-header with-border">
+							<h3 class="box-title">Technische Daten</h3>
+							<div class="box-tools pull-right">
+								<button class="btn btn-box-tool" data-widget="collapse">
+									<i class="fa fa-minus"></i>
+								</button>
+							</div>
+						</div>
+						<!-- Box body -->
+						<div class="box-body">
+							
+							<table class="pure-table pure-table-horizontal pure-table-fitted">
+								<tbody>
+									<tr>
+										<td>Moving Average 200</td>
+										<td>13 120.86</td>
+									</tr>
+									<tr>
+										<td>Moving Average 38</td>
+										<td>12 890.76</td>
+									</tr>
+									<tr>
+										<td>12 Monate Volatilität</td>
+										<td>8.4 %</td>
+									</tr>
+									<tr>
+										<td>YTD Performance</td>
+										<td>17.8 %</td>
+									</tr>
+									<tr>
+										<td>12 Monate Performance</td>
+										<td>18.4 %</td>
+									</tr>
+								</tbody>
+								
+							</table>
+							
+						</div>
+					</div>		
+					
+					
 				</div>
 				
-				<div class="pure-u-1-5">
-					<button class="w3-bar-item w3-button" onclick="openCity('de')">more...</button>
+				<div class="pure-u-1-24">
 				</div>
-			</div>
-			
-			<div class="pure-g">
-				<div class="pure-u-2-5">
-					GDP
-
-				</div>
-			
-				<div class="pure-u-2-5">
-					1 234 Mrd. €
-					<div id="gdp2">
-						asgq
+				
+				
+				
+				<div class="pure-u-13-24">
+					<div class="box box-primary collapsed-box">
+						<div class="box-header with-border">
+							<h3 class="box-title">Leitzins</h3>
+							<div class="box-tools pull-right">
+								<button class="btn btn-box-tool" data-widget="collapse">
+									<i class="fa fa-plus"></i>
+								</button>
+								
+								<button class="btn btn-box-tool" data-widget="remove">
+									<i class="fa fa-times"></i>
+								</button>
+							</div>
+							
+						</div>
+						<!-- Box body -->
+						<div class="box-body">
+						
+							
+							<div class="pure-g">
+								<!--  CHART -->
+								<div class="pure-u-5-8">
+									<canvas id="myChart" class="chart-box"></canvas>
+								</div>
+								
+								<div class="pure-u-1-24">
+								</div>
+								
+								<!--  TABLE -->
+								<div class="pure-u-1-3">
+									<table class="pure-table-fitted pure-table pure-table-horizontal table-box">
+										<tbody>
+											<tr>
+												<td>Allzeithoch</td>
+												<td>4.25 %</td>
+											</tr>
+											<tr>
+												<td>Änderung</td>
+												<td>-0.25 %</td>
+											</tr>
+											<tr>
+												<td>Trend</td>
+												<td>-</td>
+											</tr>
+											<tr>
+												<td>Download</td>
+												<td>TODO</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
 					</div>
 					
 					
-				</div>
-				
-				<div class="pure-u-1-5">
-					<button class="w3-bar-item w3-button" onclick="toggleElements('gdp')">more...</button>
 					
-					<div id="gdp3">
-						asts
+					<div class="box box-primary collapsed-box">
+						<div class="box-header with-border">
+							<h3 class="box-title">Arbeitslosigkeit</h3>
+							<div class="box-tools pull-right">
+								<button class="btn btn-box-tool" data-widget="collapse">
+									<i class="fa fa-plus"></i>
+								</button>
+								
+								<button class="btn btn-box-tool" data-widget="remove">
+									<i class="fa fa-times"></i>
+								</button>
+							</div>
+							
+						</div>
+						<!-- Box body -->
+						<div class="box-body">
+						
+							
+							<div class="pure-g">
+								<!--  CHART -->
+								<div class="pure-u-5-8">
+									<canvas id="myChart2" class="chart-box"></canvas>
+								</div>
+								
+								<div class="pure-u-1-24">
+								</div>
+								
+								<!--  TABLE -->
+								<div class="pure-u-1-3">
+									<table class="pure-table-fitted pure-table pure-table-horizontal table-box">
+										<tbody>
+											<tr>
+												<td>Allzeithoch</td>
+												<td>12.5 %</td>
+											</tr>
+											<tr>
+												<td>Änderung</td>
+												<td>-0.40 %</td>
+											</tr>
+											<tr>
+												<td>Trend</td>
+												<td>-</td>
+											</tr>
+											<tr>
+												<td>Download</td>
+												<td>TODO</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
 					</div>
 					
-					
-					
 				</div>
+			
+			
+			
+			
 			</div>
-			
-			<div class="pure-g">
-				<div class="pure-u-2-5">
-					Leitzins
-				</div>
-			
-				<div class="pure-u-2-5">
-					0.00 %
-				</div>
-				
-				<div class="pure-u-1-5">
-					<button class="w3-bar-item w3-button" onclick="openCity('de')">more...</button>
-				</div>
-			</div>
-			
-			
 		</div>
-	
-	
 	</div>
+
 
 	<div id="usa" class="city" style="display:none">
 		<div class="content">
-
-			
-			
-			<!-- Box begins -->
-			<div class="box box-warning box-solid">
-				
-				<!-- Box Header -->
-				<div class="box-header with-border">
-					<h3>Box title-Bla</h3>
-					
-					<div class="box-tools pull-right">
-					
-						<!--  Collapse button-->
-						<button type="button" class="btn btn-box-tool" data-widget="collapse">
-							<i class="fa fa-minus">
-							</i>
-						</button>
-					
-					</div>
-					
-					
-				</div>
-				
-				
-				<!-- Box body -->
-				<div class="box-body">
-					"Body of the box"
-					
-					
-					<div id="gdp1" width="100" height="100">
-						<canvas id="myChart" width="100" height="100"></canvas>
-					</div>	
-				</div>
-			</div>
-			
-			
-			
-			
-			
-			
-			
-		
+			akask
 		</div>
 	</div>
 
@@ -231,41 +334,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="../static/js/adminlte.min.js" th:src="@{js/adminlte.min.js}"></script>
 <script src="..\static/js/ui.js" th:src="@{js/ui.js}"></script>
-
-
-
-<script>
-
-var ctx = document.getElementById('myChart').getContext('2d');
-var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'line',
-
-    // The data for our dataset
-    data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [{
-            label: "gdp",
-            backgroundColor: 'rgb(66, 220, 163)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
-        }]
-    },
-
-    // Configuration options go here
-    options: {}
-});
-
-
-
-
-
-
-
-
-
-
-</script>
+<script src="../static/js/custom_charts.js" th:src="@{js/custom_charts.js}"></script>
 
 </body>
 </html>

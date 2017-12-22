@@ -1,29 +1,43 @@
-var Chart = require('Chart.js');
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
 
-$.getJSON(www.tessera-sigma.de/api/tester, function (json) {
-  // will generate array with ['Monday', 'Tuesday', 'Wednesday']
-  var labels = json.map(function(item) {
-    return item.id;
-  });
-  var datas = json.map(function(item){
-	 return item.interest; 
-  });
+    // The data for our dataset
+    data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [{
+            label: "Leitzins",
+            backgroundColor: 'rgb(66, 220, 163)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45],
+        }]
+    },
 
-  var data = {
-    labels: labels,
-    datasets: [
-    {
-      label: "My First dataset",
-      fillColor: "rgba(220,220,220,0.5)",
-      strokeColor: "rgba(220,220,220,0.8)",
-      highlightFill: "rgba(220,220,220,0.75)",
-      highlightStroke: "rgba(220,220,220,1)",
-      data: datas
-    }]};
+    // Configuration options go here
+    options: {
+		maintainAspectRatio: false
+	}
+});
 
-  var ctx = document.getElementById("myChart").getContext("2d");
-  ctx.canvas.width = 1000;
-  ctx.canvas.height = 800;
+var ctx = document.getElementById('myChart2').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
 
-  var myChart = new Chart(ctx).Bar(data);
+    // The data for our dataset
+    data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [{
+            label: "Arbeitslosigkeit",
+            backgroundColor: 'rgb(66, 220, 163)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [9.4, 8.9, 8.4, 7.6, 7.9, 6.8, 6],
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+		maintainAspectRatio: false
+	}
 });

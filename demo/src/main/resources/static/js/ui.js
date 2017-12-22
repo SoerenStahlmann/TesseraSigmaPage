@@ -56,41 +56,107 @@ function openCity(cityName) {
 }
 
 
-function getElementsByIdStartsWith(selectorTag, prefix) {
-    var items = [];
-    var myPosts = document.getElementsByTagName(selectorTag);
-    for (var i = 0; i < myPosts.length; i++) {
-        //omitting undefined null check for brevity
-        if (myPosts[i].id.lastIndexOf(prefix, 0) === 0) {
-            items.push(myPosts[i]);
-        }
+
+ function reloadJs(src) {
+    src = $('script[src$="' + src + '"]').attr("src");
+    $('script[src$="' + src + '"]').remove();
+    $('<script/>').attr('src', src).appendTo('body');
+}
+
+
+
+
+function createChartBox(header){
+
+	var d = document.createElement("div");
+	var bh = document.createElement("div");
+	var bb = document.createElement("div");
+	var btool = document.createElement("div");
+	var bodyc = document.createElement("div");
+	
+	var h = document.createElement("h3");
+	var btnc = document.createElement("button"); 
+	var btnr = document.createElement("button");
+	var ip = document.createElement("i");
+	var it = document.createElement("i");
+	
+	//take care of classes for the box div elements
+	d.classList.add('box');
+	d.classList.add('box-primary');
+	d.classList.add('collapsed-box');
+	
+	bh.classList.add('box-header');
+	bh.classList.add('with-border');
+	
+	bb.classList.add('box-body');
+	
+	btool.classList.add('box-tools');
+	btool.classList.add('pull-right');
+	
+	h.classList.add('box-title');
+	h.innerHTML = header;
+	
+	btnr.classList.add('btn');
+	btnr.classList.add('btn-box-tool');
+	btnr.dataset.widget = "remove";
+	
+	btnc.classList.add('btn');
+	btnc.classList.add('btn-box-tool');
+	btnc.dataset.widget = "collapse";
+	
+	it.classList.add('fa');
+	it.classList.add('fa-times');
+	
+	ip.classList.add('fa');
+	ip.classList.add('fa-plus');
+	
+	//Append Head content
+	btnr.appendChild(it);
+	btnc.appendChild(ip);
+	
+	btool.appendChild(btnc);
+	btool.appendChild(btnr);
+	
+	bh.appendChild(h);
+	bh.appendChild(btool);
+	
+	d.appendChild(bh);
+	d.appendChild(bb);
+	
+	//Append Body content
+	bodyc.innerHTML = "asdagareaasss"
+	bb.appendChild(bodyc);
+	
+	
+	document.getElementsByClassName("pure-u-13-24")[0].appendChild(d);
+	
+	//reloadJs("adminlte.min.js");
+}
+
+
+
+function addRowHandlers() {
+    var table = document.getElementById("tst");
+    var rows = table.getElementsByTagName("tr");
+    for (i = 0; i < rows.length; i++) {
+        var currentRow = table.rows[i];
+        var createClickHandler = 
+            function(row) 
+            {
+                return function() { 
+                                        var cell = row.getElementsByTagName("td")[0];
+                                        var id = cell.innerHTML;
+                                        
+										createChartBox(id);
+										
+										
+                                 };
+            };
+
+        currentRow.onclick = createClickHandler(currentRow);
     }
-    return items;
 }
-
-
-
-
-function toggleElements(columnID) {
-	
-    var col = getElementsByIdStartsWith("div", columnID);
-	
-	
-	for(var i = 0; i < col.length; i++){
-		
-		if(col[i].style.display === "none"){		
-			col[i].style.display = "block";
-		} else{
-			col[i].style.display = "none";
-		}
-		
-		
-	}
-	
-	
-	
-	
-}
+window.onload = addRowHandlers();
 
 
 
