@@ -56,18 +56,11 @@ function openCity(cityName) {
 }
 
 
-
- function reloadJs(src) {
-    src = $('script[src$="' + src + '"]').attr("src");
-    $('script[src$="' + src + '"]').remove();
-    $('<script/>').attr('src', src).appendTo('body');
-}
-
-
-
-
 function createChartBox(header){
 
+	var checkEl = document.getElementById(header);
+	
+	if(checkEl === null){
 	var d = document.createElement("div");
 	var bh = document.createElement("div");
 	var bb = document.createElement("div");
@@ -84,6 +77,7 @@ function createChartBox(header){
 	d.classList.add('box');
 	d.classList.add('box-primary');
 	d.classList.add('collapsed-box');
+	d.id = header;
 	
 	bh.classList.add('box-header');
 	bh.classList.add('with-border');
@@ -98,11 +92,9 @@ function createChartBox(header){
 	
 	btnr.classList.add('btn');
 	btnr.classList.add('btn-box-tool');
-	btnr.dataset.widget = "remove";
 	
 	btnc.classList.add('btn');
 	btnc.classList.add('btn-box-tool');
-	btnc.dataset.widget = "collapse";
 	
 	it.classList.add('fa');
 	it.classList.add('fa-times');
@@ -130,20 +122,24 @@ function createChartBox(header){
 	
 	document.getElementsByClassName("pure-u-13-24")[0].appendChild(d);
 	
-	//reloadJs("adminlte.min.js");
+	addBoxHandlers();
+	}
 }
 
 
 
 function addRowHandlers() {
-    var table = document.getElementById("tst");
-    var rows = table.getElementsByTagName("tr");
-    for (i = 0; i < rows.length; i++) {
-        var currentRow = table.rows[i];
-        var createClickHandler = 
-            function(row) 
-            {
-                return function() { 
+	var tbl = document.getElementsByTagName("table");
+	
+	for(j = 0; j < tbl.length; j++){
+		var rows = tbl[j].getElementsByTagName("tr");
+		
+		for (i = 0; i < rows.length; i++) {
+			var currentRow = tbl[j].rows[i];
+			var createClickHandler = 
+				function(row) 
+				{
+					return function() { 
                                         var cell = row.getElementsByTagName("td")[0];
                                         var id = cell.innerHTML;
                                         
@@ -155,13 +151,72 @@ function addRowHandlers() {
 
         currentRow.onclick = createClickHandler(currentRow);
     }
+	}
+	
+    
 }
 window.onload = addRowHandlers();
 
 
 
+function collapseBox(el){
+
+	var b = el.parentElement.parentElement.parentElement.parentElement;
+
+
+	b.classList.add('collapsed-box')
+	el.classList.remove('fa-minus');
+	el.classList.add('fa-plus');
+
+}
+
+function appendBox(el){
+	
+	var b = el.parentElement.parentElement.parentElement.parentElement;
+	
+	b.classList.remove('collapsed-box')
+	el.classList.remove('fa-plus');
+	el.classList.add('fa-minus');
+
+}
+
+function removeBox(el){
+	var b = el.parentElement.parentElement.parentElement.parentElement;
+	
+	b.remove();
+
+}
+
+function boxAction(el){
+			
+			
+			return function(){
+			
+			if(el.classList.contains('fa-plus')){
+				appendBox(el);
+			}
+			else if(el.classList.contains('fa-minus')){
+				collapseBox(el);
+			}
+			else if(el.classList.contains('fa-times')){
+				removeBox(el);
+			}
+			};
+		}
 
 
 
-
+function addBoxHandlers() {
+    var table = document.getElementsByClassName("fa");
+	
+		
+	for(i = 0; i < table.length; i++){
+		
+		
+		table[i].onclick = boxAction(table[i]);
+		
+	}
+    
+}
+window.onload = addBoxHandlers();
 
