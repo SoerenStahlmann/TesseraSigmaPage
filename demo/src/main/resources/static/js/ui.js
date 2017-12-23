@@ -213,7 +213,7 @@ function addBoxHandlers() {
 	for(i = 0; i < table.length; i++){
 		
 		
-		table[i].onclick = boxAction(table[i]);
+		table[i].parentElement.onclick = boxAction(table[i]);
 		
 	}
     
